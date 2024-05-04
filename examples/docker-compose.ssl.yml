@@ -1,0 +1,13 @@
+version: '3'
+services:
+  bond:
+    image: mosswill/bond:latest
+    ports:
+      - "443:443"
+    volumes:
+      - ./certificate.pem:/certificate.pem
+      - ./key.pem:/key.pem
+    environment:
+      SSL: "TRUE"
+      PORT: "443"
+      SECRET: "<PLACEHOLDER>"
