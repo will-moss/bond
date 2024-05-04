@@ -1,0 +1,8 @@
+version: '3'
+services:
+  bond:
+    image: mosswill/bond:latest
+    ports:
+      - 80:80
+    volumes:
+      - .env:/.env
