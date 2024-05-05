@@ -150,6 +150,50 @@ Bond exposes the following API, consisting of a single endpoint :
 
 The API will directly return the image representing the QR code generated using your settings.
 
+## Usage
+
+To generate QR codes using Bond, you can copy and adapt the following examples :
+
+### curl
+
+```sh
+curl -o qr-code.png "https://bond.your-domain.tld/?content=YOUR-CONTENT&size=512&secret=YOUR-SECRET"
+```
+
+### wget
+
+```sh
+wget -O qr-code.png "https://bond.your-domain.tld/?content=YOUR-CONTENT&size=512&secret=YOUR-SECRET"
+```
+
+### Javascript
+
+```javascript
+async function to_qrcode(text) {
+  const url = `https://bond.your-domain.tld/?` + new URLSearchParams({
+    size: 512,
+    content: text,
+    secret: 'YOUR-SECRET'
+  });
+  let response = await fetch(url);
+
+  if (response.status !== 200) {
+    console.log('HTTP-Error: ' + response.status);
+    return null;
+  }
+
+  const blob = await response.blob();
+  const objectURL = URL.createObjectURL(blob);
+
+  const image = document.createElement('img');
+  image.src = objectURL;
+
+  const container = document.getElementById('YOUR-CONTAINER');
+  container.append(image);
+}
+
+await to_qrcode("YOUR-CONTENT");
+```
 
 ## Troubleshoot
 
