@@ -72,8 +72,17 @@ func main() {
 	}
 	app.Use(middleware.Recoverer)
 
+	// CORS-specific
+	app.Options("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET")
+	})
+
 	// GET /
 	app.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET")
+
 		secret := r.URL.Query().Get("secret")
 		content := r.URL.Query().Get("content")
 		size := r.URL.Query().Get("size")
