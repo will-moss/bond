@@ -55,7 +55,7 @@ To help you get started quickly, multiple example `docker-compose` files are loc
 
 Here's a description of every example :
 
-- `docker-compose.simple.yml`: Run Bond as a front-facing service on port 80., with environment variables supplied in the `docker-compose` file directly.
+- `docker-compose.simple.yml`: Run Bond as a front-facing service on port 80, with environment variables supplied in the `docker-compose` file directly.
 
 - `docker-compose.volume.yml`: Run Bond as a front-facing service on port 80, with environment variables supplied as a `.env` file mounted as a volume.
 
