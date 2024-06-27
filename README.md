@@ -61,7 +61,7 @@ Here's a description of every example :
 
 - `docker-compose.ssl.yml`:  Run Bond as a front-facing service on port 443, listening for HTTPS requests, with certificate and private key provided as mounted volumes.
 
-- `docker-compose.proxy.yml`: A full setup with Bond running on port 80, behind a proxy listening on port 443, and Gotenberg running as well while not being exposed to external requests.
+- `docker-compose.proxy.yml`: A full setup with Bond running on port 80, behind a proxy listening on port 443.
 
 When your `docker-compose` file is on point, you can use the following commands :
 ```sh
