@@ -10,3 +10,4 @@ go.work
 scripts
 .aliases
 .env
+cloud

@@ -114,7 +114,14 @@ func main() {
 		}
 
 		// Generate the QR code
-		png, _ := qrcode.Encode(content, recoveryLevels[strings.ToUpper(getEnv("RECOVERY_LEVEL"))], realSize)
+		png, err := qrcode.Encode(content, recoveryLevels[strings.ToUpper(getEnv("RECOVERY_LEVEL"))], realSize)
+
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+
+		// Output the QR code
 		_, err = w.Write(png)
 
 		if err != nil {
