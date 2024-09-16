@@ -5,7 +5,36 @@
       <br />
       Generate QR codes with a one-endpoint API
    </p>
+   <p align="center">
+      <a href="#table-of-contents">Table of Contents</a> -
+      <a href="#deployment-and-examples">Install</a> -
+      <a href="#configuration">Configure</a>
+    </p>
+    <p align="center">
+        <a href="#free-hosted-service">
+            <img src="https://img.shields.io/badge/FREE%20HOSTED%20SERVICE-AVAILABLE-green?style=for-the-badge&labelColor=black" />
+        </a>
+    </p>
 </p>
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Deployment and Examples](#deployment-and-examples)
+  * [Deploy with Docker](#deploy-with-docker)
+  * [Deploy with Docker Compose](#deploy-with-docker-compose)
+  * [Deploy as a standalone application](#deploy-as-a-standalone-application)
+- [Configuration](#configuration)
+- [API Reference](#api-reference)
+  * [Generate a QR code](#generate-a-qr-code)
+- [Usage](#usage)
+  * [Curl](#curl)
+  * [Wget](#wget)
+  * [Javascript](#javascript)
+- [Free Hosted Service](#free-hosted-service)
+- [Troubleshoot](#troubleshoot)
+- [Credits](#credits)
 
 ## Introduction
 
@@ -195,12 +224,29 @@ async function to_qrcode(text) {
 await to_qrcode("YOUR-CONTENT");
 ```
 
+## Free Hosted Service
+
+Using our hosted service, you can use Bond to generate QR codes for free and without account registration.
+
+The service is provided freely with the following characteristics :
+- **URL :** `https://endpoint.bond/`
+- **Secret :** `52e679fae92441942a2ed4390ad9e8639eab9347a74a19ebaa00ef4a5494f7f3`
+- **Limitations :**
+  * **Max QR code size :** 512x512 pixels
+  * **Recovery level :** Low
+  * **HTTP verbs :** HEAD, GET
+  * **Rate limit :** 1 request per second
+- **Miscellaneous :**
+  * Requests are not logged
+  * HTTPS is required
+
+For more advanced needs, please open an issue, or send an email to the address displayed on my Github Profile.
+
 ## Troubleshoot
 
 Should you encounter any issue running Bond, please refer to the following common problems that may occur.
 
 > If none of these matches your case, feel free to open an issue.
-
 
 #### Bond is unreachable over HTTP / HTTPS
 
