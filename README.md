@@ -234,7 +234,7 @@ The service is provided freely with the following characteristics :
 - **Limitations :**
   * **Max QR code size :** 512x512 pixels
   * **Recovery level :** Low
-  * **HTTP verbs :** HEAD, GET
+  * **HTTP verbs :** OPTIONS, GET
   * **Rate limit :** 1 request per second
 - **Miscellaneous :**
   * Requests are not logged
