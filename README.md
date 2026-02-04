@@ -48,6 +48,7 @@ Bond has all these features implemented :
 - Generate a QR code of any size with any content
 - Simple security using a defined secret to deter bots
 - Support for HTTP and HTTPS
+- Support for health checks
 - Support for standalone / proxy deployment
 
 On top of these, one may appreciate the following characteristics :
@@ -178,6 +179,14 @@ Bond exposes the following API, consisting of a single endpoint :
 | `content` | `string` | **Required.** The data to encode in the QR code. |
 
 The API will directly return the image representing the QR code generated using your settings.
+
+#### Perform a health check
+
+```
+  GET /health
+```
+
+The API will return a `HTTP 200 OK` response with an empty body, indicating that the server is up and running.
 
 ## Usage
 

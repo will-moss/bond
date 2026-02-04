@@ -133,6 +133,13 @@ func main() {
 		w.Header().Set("Content-Type", "application/octet-stream")
 	})
 
+	// GET /health
+	app.Get("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Methods", "GET")
+		w.WriteHeader(http.StatusOK)
+	})
+
 	log.Printf("Server starting on port %s", getEnv("PORT"))
 	if getEnv("SSL") == "TRUE" {
 		err = http.ListenAndServeTLS(fmt.Sprintf(":%s", getEnv("PORT")), "certificate.pem", "key.pem", app)
