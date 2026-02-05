@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 	"log"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/go-chi/chi"
@@ -45,6 +46,39 @@ func getEnv(key string, fallback ...string) string {
 	return value
 }
 
+// Sends an HTTP request to the /health endpoint on the running server
+// and returns an exit code. This assumes that a first "./bond" program runs,
+// and this was called via "./bond --healthcheck" on the exact same machine / container
+func runHealthcheck() int {
+	// Reconstruct the URL to reach the server locally
+	protocol := "http"
+	if getEnv("SSL") == "TRUE" {
+		protocol = "https"
+	}
+
+	healthURL := fmt.Sprintf("%s://localhost:%s/health", protocol, getEnv("PORT"))
+
+	// Call the health check URL
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+	}
+
+	resp, err := client.Get(healthURL)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Health check failed: %v\n", err)
+		return 1
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		fmt.Fprintf(os.Stderr, "Health check failed: status %d\n", resp.StatusCode)
+		return 1
+	}
+
+	fmt.Println("OK")
+	return 0
+}
+
 // Entrypoint
 func main() {
 	godotenv.Load("default.env")
@@ -53,6 +87,12 @@ func main() {
 	err := godotenv.Overload(".env")
 	if err != nil {
 		log.Print("No .env file provided, will continue with system env")
+	}
+
+	// Run a simple health check when the "--healthcheck" arg is provided on the commandline
+	if len(os.Args) > 1 && os.Args[1] == "--healthcheck" {
+		exitCode := runHealthcheck()
+		os.Exit(exitCode)
 	}
 
 	// Define the keyword-int association for QR code recovery levels

@@ -188,6 +188,10 @@ The API will directly return the image representing the QR code generated using 
 
 The API will return a `HTTP 200 OK` response with an empty body, indicating that the server is up and running.
 
+> If you are looking to perform a health check from the server itself (be it on-premise or a Docker Container), you can use the `bond --healthcheck` command.
+  It will spawn a single-task instance of Bond that sends an HTTP request to the already-existing Bond server to ensure that it is up and running. That is
+  especially useful on systems where `curl` or `wget` isn't available (such as the Bond container itself).
+
 ## Usage
 
 To generate QR codes using Bond, you can copy and adapt the following examples :
