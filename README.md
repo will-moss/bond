@@ -28,6 +28,7 @@
 - [Configuration](#configuration)
 - [API Reference](#api-reference)
   * [Generate a QR code](#generate-a-qr-code)
+  * [Perform a health check](#perform-a-health-check)
 - [Usage](#usage)
   * [Curl](#curl)
   * [Wget](#wget)
