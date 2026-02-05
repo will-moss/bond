@@ -87,6 +87,8 @@ Here's a description of every example :
 
 - `docker-compose.simple.yml`: Run Bond as a front-facing service on port 80, with environment variables supplied in the `docker-compose` file directly.
 
+- `docker-compose.healthcheck.yml`: Run Bond as a front-facing service on port 80, with environment variables supplied in the `docker-compose` file directly, with an automated health check every 30 seconds.
+
 - `docker-compose.volume.yml`: Run Bond as a front-facing service on port 80, with environment variables supplied as a `.env` file mounted as a volume.
 
 - `docker-compose.ssl.yml`:  Run Bond as a front-facing service on port 443, listening for HTTPS requests, with certificate and private key provided as mounted volumes.

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bond:
+    image: mosswill/bond:latest
+    ports:
+      - "80:80"
+    environment:
+      PORT: "80"
+      SECRET: "<PLACEHOLDER>"
+    healthcheck:
+      test: ["CMD" ,"/bond", "--healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
